@@ -53,7 +53,7 @@ const DiagnosisForm: React.FC = () => {
 
       // API リクエストを送信
       const response = await axios.post(
-        "http://localhost:5000/api/diagnose",
+        "https://ai-diagnostic-app-backend.onrender.com/api/diagnose",
         data
       );
       const diagnosisResult = response.data;
