@@ -58,27 +58,20 @@ const DiagnosisForm: React.FC = () => {
       );
       const diagnosisResult = response.data;
 
-      console.log("診断結果のレスポンス:", diagnosisResult);
-
       if (!diagnosisResult || !diagnosisResult.recommendedLanguage) {
         console.error("診断結果が正しくありません。");
         return;
       }
 
       // 正規表現でプログラミング言語を抽出
-      const languageRegex = /(python|javascript|swift|kotlin|java|c#|flutter|unity|powershell|dart)/i;
+      const languageRegex =
+        /(python|javascript|swift|kotlin|java|c#|flutter|unity|powershell|dart)/i;
       const match = diagnosisResult.recommendedLanguage.match(languageRegex);
 
       let normalizedLanguage = match ? match[0].toLowerCase() : "default";
-      console.log("正規化された言語:", normalizedLanguage);
 
       // 画像 URL の設定
       const imageUrl = imageUrls[normalizedLanguage] || imageUrls["default"];
-      console.log("使用する画像 URL:", imageUrl);
-
-      console.log("診断結果の文字数:", diagnosisResult.message.length);
-      console.log("診断結果の内容:", diagnosisResult.message);
-      console.log("APIレスポンスのフル内容:", response.data);
 
       // 診断結果を状態に設定
       setResult({
@@ -183,7 +176,6 @@ const DiagnosisForm: React.FC = () => {
               />
               <label className="form-check-label">インフラ</label>
             </div>
-
           </div>
 
           <div className="form-group">
